@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Full-width Container */
+        .container {
+            width: 95%;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 0; /* Ensures it starts from the top */
+        }
+
+        /* Title */
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #ff6600;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Button */
+        .download-btn {
+            text-decoration: none;
+            color: white;
+            background-color: #ff6600;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s ease-in-out;
+        }
+
+        .download-btn:hover {
+            background-color: #ff4500;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                width: 98%;
+            }
+
+            th, td {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .download-btn {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: auto;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="container">
+        <h2>Your Generated Data History</h2>
+        {% if history %}
+            <table>
+                <tr>
+                    <th>Dataset Name</th>
+                    <th>Generated On</th>
+                    <th>Download</th>
+                </tr>
+                {% for entry in history %}
+                    <tr>
+                        <td>{{ entry.dataset_name }}</td>
+                        <td>{{ entry.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                        <td>
+                            <a href="{{ url_for('download', filename=entry.file_path.split('/')[-1]) }}" class="download-btn">
+                                ⬇ Download
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p style="text-align:center;">No history found. Generate some datasets first!</p>
+        {% endif %}
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Synthetic Data Generator. All rights reserved.</p>
+    </div>
+
+</body>
+</html>

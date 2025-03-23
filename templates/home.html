@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Synthetic Data Generator</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            text-align: center;
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 50px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .features h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .feature-box {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-box h3 {
+            color: #764ba2;
+        }
+
+        /* Get Started / Generate Button */
+        .cta {
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff6600;
+            color: white;
+            padding: 15px 30px;
+            font-size: 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #ff4500;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Include Navbar -->
+    {% include 'navbar.html' %}
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to the Synthetic Data Generator</h1>
+        <p>Easily create high-quality synthetic datasets for AI and machine learning models without privacy concerns.</p>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features">
+        <h2>Why Use Our Synthetic Data Generator?</h2>
+
+        <div class="feature-box">
+            <h3>🔹 Privacy-Preserving Data</h3>
+            <p>Generate synthetic data that mimics real datasets while maintaining complete privacy and avoiding data ownership issues.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>🔹 Automatic Schema Inference</h3>
+            <p>Just provide a dataset name, and the system will automatically determine its structure and generate similar synthetic data.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>🔹 Supports Multiple Data Types</h3>
+            <p>Generate numerical, categorical, and text-based synthetic data dynamically without predefined mappings.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>🔹 No Manual Configurations</h3>
+            <p>Fully automated process with no need for manual adjustments. Fetches dataset schemas dynamically from public sources.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>🔹 Ready for AI & ML Applications</h3>
+            <p>Train your machine learning models with high-quality, statistically realistic datasets.</p>
+        </div>
+
+        <!-- Get Started / Generate Button -->
+        <div class="cta">
+            {% if 'user' in session %}
+                <a href="/generate" class="btn">Generate Data Now!</a>
+            {% else %}
+                <a href="/signup" class="btn">Get Started</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Synthetic Data Generator. All rights reserved.</p>
+    </div>
+
+</body>
+</html>

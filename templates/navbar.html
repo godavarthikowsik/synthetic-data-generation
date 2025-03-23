@@ -1,0 +1,95 @@
+<nav>
+    <div class="nav-container">
+        <div class="nav-left">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('generate') }}">Generate Data</a>
+            {% if 'user' in session %}
+                <a href="{{ url_for('history') }}">Download History</a>
+            {% endif %}
+        </div>
+        <div class="nav-right">
+            {% if 'user' in session %}
+                <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('signup') }}" class="signup-btn">Signup</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+<hr>
+
+<style>
+    /* Navbar Styling */
+    nav {
+        background-color: #333;
+        padding: 12px 20px;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .nav-left a, .nav-right a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 10px 15px;
+        transition: 0.3s;
+    }
+
+    .nav-left a:hover, .nav-right a:hover {
+        background-color: #575757;
+        border-radius: 5px;
+    }
+
+    .nav-right {
+        display: flex;
+        gap: 10px;
+    }
+
+    .signup-btn {
+        background-color: #ff6600;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .signup-btn:hover {
+        background-color: #ff4500;
+    }
+
+    .logout-btn {
+        background-color: #d9534f;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .logout-btn:hover {
+        background-color: #c9302c;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .nav-container {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .nav-left, .nav-right {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+</style>
