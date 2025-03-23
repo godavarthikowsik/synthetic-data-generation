@@ -1,0 +1,8 @@
+Flask==3.0.0
+pandas==2.1.4
+numpy==1.26.2
+Faker==20.1.0
+pymongo==4.5.0
+kaggle==1.5.16
+werkzeug==3.0.1
+chardet==5.2.0
